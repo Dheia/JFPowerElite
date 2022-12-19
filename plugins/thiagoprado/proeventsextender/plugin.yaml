@@ -1,0 +1,6 @@
+plugin:
+    name: 'thiagoprado.proeventsextender::lang.plugin.name'
+    description: 'thiagoprado.proeventsextender::lang.plugin.description'
+    author: 'Thiago Prado'
+    icon: oc-icon-calendar
+    homepage: 'https://www.to-it.ca/'

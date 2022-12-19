@@ -1,0 +1,4 @@
+title: EventExtender
+modelClass: ThiagoPrado\ProEventsExtender\Models\EventExtender
+toolbar:
+    buttons: reorder_toolbar

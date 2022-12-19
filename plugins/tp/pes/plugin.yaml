@@ -1,0 +1,6 @@
+plugin:
+    name: 'tp.pes::lang.plugin.name'
+    description: 'tp.pes::lang.plugin.description'
+    author: 'Thiago Prado'
+    icon: oc-icon-dashboard
+    homepage: ''

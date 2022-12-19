@@ -1,0 +1,73 @@
+<div class="calendar" id="small_cal_load">
+	<table  class='small_cal'>
+		<thead>
+			<tr>
+				<th class='select'>
+					<a class="button" class = "button white submo" onClick="smallCalPrevMonth()">
+						<span class="icon-circle-arrow-left"></span>
+					</a>
+				</th>
+				<th colspan=5 id="small_cal_year" align='center'>{{ cal_date|date('F') }} {{year}}</th>
+				<th>
+					<a class="button" style="float: right;" class = "button white addmo" onClick="smallCalNextMonth()">
+						<span class="icon-circle-arrow-right"></span>
+					</a>
+				</th>
+			</tr>
+
+			{% if euro_cal == 1 %}
+				<tr class="header">
+			        <td>{{'Mon'|_}}</td>
+			        <td>{{'Tue'|_}}</td>
+			        <td>{{'Wed'|_}}</td>
+			        <td>{{'Thu'|_}}</td>
+			        <td>{{'Fri'|_}}</td>
+			        <td>{{'Sat'|_}}</td>
+			        <td>{{'Sun'|_}}</td>
+			    </tr>
+			{% else %}
+			    <tr class="header">
+			    	<td>{{'Sun'|_}}</td>
+			        <td>{{'Mon'|_}}</td>
+			        <td>{{'Tue'|_}}</td>
+			        <td>{{'Wed'|_}}</td>
+			        <td>{{'Thu'|_}}</td>
+			        <td>{{'Fri'|_}}</td>
+			        <td>{{'Sat'|_}}</td>
+			    </tr>
+			{% endif %}
+		</thead>
+		<tbody id="small_cal_ajax_load">
+			{% partial  __SELF__ ~ "::smallcal_ajax" %}
+		</tbody>
+	</table>
+</div>
+{% put scripts %}
+<script type="text/javascript">
+	$.request("{{ __SELF__ }}::onRun",{
+		update: {'{{ __SELF__ }}::smallcal_ajax': '#small_cal_ajax_load'},
+	});
+	smallCalPrevMonth = function(){
+		$.request("{{ __SELF__ }}::onPrevMonth",{
+			data: {
+				cal_date: $('#curent_date').val()
+			},
+			update: {'{{ __SELF__ }}::smallcal_ajax': '#small_cal_ajax_load'},
+			complete: ()=>{
+				$('#small_cal_year').html($('#cal_title').val());
+			},
+		});
+	}
+	smallCalNextMonth = function(){
+		$.request("{{ __SELF__ }}::onNextMonth",{
+			data: {
+				cal_date: $('#curent_date').val()
+			},
+			update: {'{{__SELF__}}::smallcal_ajax': '#small_cal_ajax_load'},
+			complete: ()=>{
+				$('#small_cal_year').html($('#cal_title').val());
+			}
+		});
+	}
+</script>
+{% endput %}

@@ -1,0 +1,10 @@
+name: EventExtender
+form: $/thiagoprado/proeventsextender/models/eventextender/fields.yaml
+modelClass: ThiagoPrado\ProEventsExtender\Models\EventExtender
+defaultRedirect: thiagoprado/proeventsextender/eventextender
+create:
+    redirect: 'thiagoprado/proeventsextender/eventextender/update/:id'
+    redirectClose: thiagoprado/proeventsextender/eventextender
+update:
+    redirect: thiagoprado/proeventsextender/eventextender
+    redirectClose: thiagoprado/proeventsextender/eventextender

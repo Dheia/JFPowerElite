@@ -1,0 +1,11 @@
+fields:
+    color:
+        label: 'Color picker'
+        span: auto
+        type: colorpicker
+    event:
+        label: Event
+        nameFrom: title
+        descriptionFrom: description
+        span: auto
+        type: relation

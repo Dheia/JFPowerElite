@@ -1,0 +1,24 @@
+{% set numMonths = 11 %}
+<input type="hidden" value="{{ 'now'|date('Y') }}" id="cur_date"/>
+<select name="setmo" id="setmo" onChange="setCalendarMonth()">
+    {% for i in 0..numMonths %}
+        * {{ i }}
+        <option value="{{i}}">{{ 'now'|date_modify("+" ~ i ~ " month")|date("M") |_ }}</option>
+    {% endfor %}
+</select>
+
+<div id="highlights_list">
+    {% partial  __SELF__ ~ "::highlights_ajax" %}
+</div>
+{% put scripts %}
+<script type="text/javascript">
+setCalendarMonth = function(){
+    $.request("{{ __SELF__ }}::onRefreshList",{
+        data: {
+            month: $('#setmo').val()
+        },
+        update: {'{{__SELF__}}::highlights_ajax': '#highlights_list'}
+    });
+}
+</script>
+{% endput %}
